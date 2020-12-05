@@ -13,7 +13,6 @@
 
 $dir = dirname( __FILE__ );
 
-$blocks = json_decode(file_get_contents("$dir/blocks.json"));
-foreach($blocks as $block) {
-    require_once "$dir/$block/$block.php";
+foreach(scandir("blocks") as $block) {
+    require_once "$dir/blocks/$block/$block.php";
 }

@@ -6,7 +6,7 @@
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
-		"build": "jq -r '.[]' blocks.json | xargs -L 1 bash -c 'BLOCK=$0 npm run build:block' ",
+		"build": "ls blocks | xargs -L 1 bash -c 'BLOCK=$0 npm run build:block' ",
 		"build:block": "rm -rf $BLOCK/build && BLOCK=$BLOCK npm run build:block:editor && BLOCK=$BLOCK npm run build:block:client",
 		"build:block:editor": "wp-scripts build $BLOCK/src/editor/index.js -o $BLOCK/build/editor/index.js",
 		"build:block:client": "parcel build $BLOCK/src/client/index.js -d $BLOCK/build/client",
