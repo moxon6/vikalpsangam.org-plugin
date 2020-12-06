@@ -11,7 +11,7 @@
 		"build:block:editor": "wp-scripts build blocks/$BLOCK/src/editor/index.js -o blocks/$BLOCK/build/editor/index.js",
 		"build:block:client": "parcel build blocks/$BLOCK/src/client/index.js -d blocks/$BLOCK/build/client",
 		"format:js": "wp-scripts format-js",
-		"lint:css": "wp-scripts lint-style",
+		"lint:scss": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"bundle": "dir-archiver --src . --dest bundle.zip --exclude node_modules .cache src bundle.zip package*.json .gitignore $(find blocks/*/src)"
 	},
