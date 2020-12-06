@@ -11,6 +11,8 @@
  * @package         vikalpsangam.org-plugin
  */
 
+include 'version.php';
+
 $dir = dirname( __FILE__ );
 
 $blocks = array_filter(
