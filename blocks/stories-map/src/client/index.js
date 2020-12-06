@@ -3,14 +3,14 @@ import LCluster from 'leaflet.markercluster';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 import 'leaflet/dist/leaflet.css';
-import 'leaflet.markercluster/dist/MarkerCluster.css'
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import './style.scss';
 
-var icon = L.icon({
-	iconUrl: `${pluginBaseUrl}/${iconUrl}`,
-	shadowUrl: `${pluginBaseUrl}/${shadowUrl}`,
-});
+var icon = L.icon( {
+	iconUrl: `${ pluginBaseUrl }/${ iconUrl }`,
+	shadowUrl: `${ pluginBaseUrl }/${ shadowUrl }`,
+} );
 
 async function fetchCoordinates() {
 	const response = await fetch( '/wp-json/vikalpsangam/v1/map' );
@@ -46,12 +46,17 @@ async function renderVikalpsangamMap( mapNode ) {
 
 	const markers = new LCluster.MarkerClusterGroup();
 
-	coordinates.forEach((coordinate) => {
-	  const marker = L.marker([coordinate.latitude, coordinate.longitude], { icon });
-	  marker.bindPopup(`<a href="${coordinate.url}">${coordinate.title}</a>`);
-	  markers.addLayer(marker);
-	});
-	map.addLayer(markers);
+	coordinates.forEach( ( coordinate ) => {
+		const marker = L.marker(
+			[ coordinate.latitude, coordinate.longitude ],
+			{ icon }
+		);
+		marker.bindPopup(
+			`<a href="${ coordinate.url }">${ coordinate.title }</a>`
+		);
+		markers.addLayer( marker );
+	} );
+	map.addLayer( markers );
 }
 
 window.onload = () =>
