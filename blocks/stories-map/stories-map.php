@@ -1,10 +1,8 @@
 <?php
-$dir = dirname( __FILE__ );
 
 function register_stories_map_block() {
-	global $dir;
-	require_once "$dir/render.php";
-	require_once "$dir/endpoints.php";
+	require_once "render.php";
+	require_once "endpoints.php";
 
 	wp_register_script(
 		'stories-map/editor/script',
@@ -24,8 +22,7 @@ function register_stories_map_block() {
 		'stories-map/client/script',
 		plugins_url( 'build/client/index.js', __FILE__ ),
 		['wp-polyfill', 'wp-api-fetch' ],
-		vikalpsangam_plugin_VERSION
-		
+		vikalpsangam_plugin_VERSION		
 	);
 
 	wp_localize_script(
