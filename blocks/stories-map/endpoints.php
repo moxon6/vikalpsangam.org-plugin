@@ -1,29 +1,36 @@
 <?php 
 
 add_action('rest_api_init', function () {
-    function get_article_coordinates($request) {
-
+    $cache_key = "get_article_coordinates";
+    
+    function get_coordinates() {
         $posts = get_posts([
             "numberposts" => -1
         ]);
-
+    
         $coordinates = array_map(function($post) {
             $latitude = get_post_meta($post->ID, 'latitude', TRUE);
             $longitude = get_post_meta($post->ID, 'longitude', TRUE);
             return [
-                "title" => get_the_title( $post->ID ),
+                "title" => get_the_title( $post->ID),
                 "url" => get_the_permalink($post->ID),
                 "latitude" => (float)$latitude,
                 "longitude" => (float)$longitude,
             ];
         }, $posts);
+    
+        return array_filter(
+            $coordinates, 
+            fn($c) => $c["latitude"] != 0 && $c["longitude"] != 0
+        );
+    }
 
-        $coordinates = array_filter($coordinates, function($c) {
-            return $c["latitude"] != 0 && $c["longitude"] != 0;
-        });
+    function get_article_coordinates($request) {
 
+        $coordinates = get_transient($cache_key);
         if (empty($coordinates)) {
-            return new WP_Error( 'empty_category', 'the array is empty', array('status' => 404) );
+            $coordinates = get_coordinates();
+            set_transient( $cache_key, $coordinates, DAY_IN_SECONDS );
         }
 
         $response = new WP_REST_Response($coordinates);
