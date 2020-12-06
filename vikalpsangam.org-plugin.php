@@ -13,6 +13,11 @@
 
 $dir = dirname( __FILE__ );
 
-foreach(scandir("blocks") as $block) {
+$blocks = array_filter(
+    scandir("$dir/blocks"),
+    fn($x) => !in_array($x, array('..', '.'))
+); 
+
+foreach($blocks as $block) {
     require_once "$dir/blocks/$block/$block.php";
 }

@@ -10,14 +10,14 @@ function register_stories_map_block() {
 		'stories-map/editor/script',
 		plugins_url( 'build/editor/index.js' , __FILE__ ),
 		array(),
-		filemtime( "build/editor/index.js" )
+		filemtime( "$dir/build/editor/index.js" )
 	);
 
 	wp_register_style(
 		'stories-map/editor/style',
 		plugins_url( "build/client/index.css", __FILE__ ),
 		array(),
-		filemtime( "build/client/index.css" )
+		filemtime( "$dir/build/client/index.css" )
 	);
 
 	wp_register_script(
