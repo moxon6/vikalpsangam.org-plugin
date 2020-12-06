@@ -9,6 +9,6 @@ registerBlockType( 'vikalpsagam-blocks/stories-map', {
 	category: 'widgets',
 	icon: 'location',
 	attributes: {},
-	edit: () => <p>"Vikalpsangam Map Block"</p>,
+	edit: () => <p>Vikalpsangam Map Block</p>,
 	save: () => null,
 } );

@@ -1,3 +1,5 @@
+/*global pluginBaseUrl */
+
 import * as L from 'leaflet';
 import LCluster from 'leaflet.markercluster';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
@@ -7,14 +9,15 @@ import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import './style.scss';
 
-var icon = L.icon( {
+const icon = L.icon( {
 	iconUrl: `${ pluginBaseUrl }/${ iconUrl }`,
 	shadowUrl: `${ pluginBaseUrl }/${ shadowUrl }`,
 } );
 
 async function fetchCoordinates() {
-	const response = await fetch( '/wp-json/vikalpsangam/v1/map' );
-	const coordinatesMap = await response.json();
+	const coordinatesMap = await wp.apiFetch( {
+		path: '/vikalpsangam/v1/map',
+	} );
 	return Object.values( coordinatesMap );
 }
 
