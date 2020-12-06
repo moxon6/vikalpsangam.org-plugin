@@ -1,8 +1,8 @@
 <?php
-
 function register_stories_map_block() {
-	require_once "render.php";
-	require_once "endpoints.php";
+	$dir = dirname( __FILE__ );
+	require_once "$dir/render.php";
+	require_once "$dir/endpoints.php";
 
 	wp_register_script(
 		'stories-map/editor/script',
