@@ -18,13 +18,10 @@ add_action('rest_api_init', function () {
             ];
         }, $posts);
 
-        $coordinates = array_filter($coordinates, function($c) {
-            return $c["latitude"] != 0 && $c["longitude"] != 0;
-        });
-
-        if (empty($coordinates)) {
-            return new WP_Error( 'empty_category', 'the array is empty', array('status' => 404) );
-        }
+        $coordinates = array_filter(
+            $coordinates, 
+            fn($c) => $c["latitude"] != 0 && $c["longitude"] != 0
+        );
 
         $response = new WP_REST_Response($coordinates);
 		$response->set_status(200);
