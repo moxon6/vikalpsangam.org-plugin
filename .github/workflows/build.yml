@@ -25,6 +25,15 @@ jobs:
     - name: "Build js,css"
       run: npm run build
 
+    - name: 'Automated Version Bump'
+      id: 'version-bump'
+      uses: 'phips28/gh-action-bump-version@master'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: "Update version.php"
+      run: ./update-version
+
     - name: "Create theme bundle"
       run: npm run bundle
 
