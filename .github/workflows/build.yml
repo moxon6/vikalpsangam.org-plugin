@@ -36,6 +36,16 @@ jobs:
 
     - name: "Create theme bundle"
       run: npm run bundle
+    
+    - name: Upload theme package
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: bundle.zip
+        asset_name: vikalpsangam.org-plugin-${{ steps.version-bump.outputs.newTag }}.zip
+        tag: ${{ steps.version-bump.outputs.newTag }}
+        overwrite: true
+        body: "Wordpress Plugin for vikalpsangam.org. Version ${{ steps.version-bump.outputs.newTag }}"
 
     # - name: Deploy Plugins to WP Server
     #   uses: appleboy/scp-action@master
