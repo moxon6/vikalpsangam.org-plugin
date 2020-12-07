@@ -1,9 +1,10 @@
 <?php
-function register_stories_map_block() {
-	$dir = dirname( __FILE__ );
-	require_once "$dir/render.php";
-	require_once "$dir/endpoints.php";
 
+$dir = dirname( __FILE__ );
+require_once "$dir/render.php";
+require_once "$dir/endpoints.php";
+
+function register_stories_map_block() {
 	wp_register_script(
 		'stories-map/editor/script',
 		plugins_url( 'build/editor/index.js' , __FILE__ ),
