@@ -1,6 +1,12 @@
 <?php
 
-class Vikalpsangam_StoriesMapWidget extends WP_Widget {
+namespace Vikalpsangam\Plugin\Widgets;
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+class StoriesMapWidget extends \WP_Widget {
 
     function __construct() {
         parent::__construct( false, __( 'Vikalpsangam Stories Map Widget', 'textdomain' ) );
@@ -20,8 +26,7 @@ class Vikalpsangam_StoriesMapWidget extends WP_Widget {
     }
 }
  
-add_action( 'widgets_init', 'register_stories_map_widget' );
+add_action( 'widgets_init', function() {
+    register_widget( 'Vikalpsangam\Plugin\Widgets\StoriesMapWidget' );
+});
  
-function register_stories_map_widget() {
-    register_widget( 'Vikalpsangam_StoriesMapWidget' );
-}   

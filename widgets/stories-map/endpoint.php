@@ -1,5 +1,7 @@
 <?php
 
+namespace Vikalpsangam\Plugin\Widgets;
+
 function register_map_endpoint() {
     function get_coordinates() {
         $posts = get_posts([
