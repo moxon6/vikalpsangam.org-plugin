@@ -24,13 +24,18 @@ class VikalpsangamCategories extends \WP_Widget {
         \Timber::render("categories.twig", $this->getContext());
     }
 
-    function form( $instance ) {
-        \Timber::render("categories.twig", $this->getContext());
-        return 'noform';
+	public function form( $instance ) {
+        \Timber::render("categories-form.twig", array_merge(
+            $this->getContext(), 
+            [
+                "title" => $instance['title'],
+                "title_field_id" => $this->get_field_id( 'title' ),
+                "title_field_name" => $this->get_field_name( 'title' )
+            ]
+        ));
     }
 }
- 
+
 add_action( 'widgets_init', function() {
     register_widget( 'Vikalpsangam\Plugin\Widgets\VikalpsangamCategories' );
 });
- 
