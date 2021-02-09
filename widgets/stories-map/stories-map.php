@@ -1,61 +1,26 @@
 <?php
 
-class WPDocs_New_Widget extends WP_Widget {
- 
-    /**
-     * Constructs the new widget.
-     *
-     * @see WP_Widget::__construct()
-     */
+class Vikalpsangam_StoriesMapWidget extends WP_Widget {
+
     function __construct() {
-        // Instantiate the parent object.
-        parent::__construct( false, __( 'My New Widget Title', 'textdomain' ) );
+        parent::__construct( false, __( 'Vikalpsangam Stories Map Widget', 'textdomain' ) );
     }
- 
-    /**
-     * The widget's HTML output.
-     *
-     * @see WP_Widget::widget()
-     *
-     * @param array $args     Display arguments including before_title, after_title,
-     *                        before_widget, and after_widget.
-     * @param array $instance The settings for the particular instance of the widget.
-     */
+
     function widget( $args, $instance ) {
-        echo "<p> This is the widget </p>";
+        echo "<p> This is the widget widget </p>";
     }
- 
-    /**
-     * The widget update handler.
-     *
-     * @see WP_Widget::update()
-     *
-     * @param array $new_instance The new instance of the widget.
-     * @param array $old_instance The old instance of the widget.
-     * @return array The updated instance of the widget.
-     */
+
     function update( $new_instance, $old_instance ) {
         return $new_instance;
     }
- 
-    /**
-     * Output the admin widget options form HTML.
-     *
-     * @param array $instance The current widget settings.
-     * @return string The HTML markup for the form.
-     */
+
     function form( $instance ) {
-        echo "<p> This is the widget </p>";
+        echo "<p> This is the widget form </p>";
     }
 }
  
-add_action( 'widgets_init', 'wpdocs_register_widgets' );
+add_action( 'widgets_init', 'register_stories_map_widget' );
  
-/**
- * Register the new widget.
- *
- * @see 'widgets_init'
- */
-function wpdocs_register_widgets() {
-    register_widget( 'WPDocs_New_Widget' );
+function register_stories_map_widget() {
+    register_widget( 'Vikalpsangam_StoriesMapWidget' );
 }   
