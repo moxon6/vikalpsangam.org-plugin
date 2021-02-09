@@ -25,26 +25,26 @@ function register_map_endpoint() {
         );
     }
 
-    function get_article_coordinates($request) {
-        
-        $cache_key = "get_article_coordinates";
-
-        $coordinates = get_transient($cache_key);
-        if (empty($coordinates)) {
-            $coordinates = get_coordinates();
-            set_transient( $cache_key, $coordinates, DAY_IN_SECONDS );
-        }
-
-        $response = new WP_REST_Response($coordinates);
-		$response->set_status(200);
-		$response->set_headers(array('Cache-Control' => 'max-age=3600'));
-		
-        return $response;
-    }
+    
 
 	register_rest_route( 'vikalpsangam/v1', 'map', array(
 		'methods'  => 'GET',
-		'callback' => 'get_article_coordinates'
+		'callback' => function ($request) {
+        
+            $cache_key = "get_article_coordinates";
+    
+            $coordinates = get_transient($cache_key);
+            if (empty($coordinates)) {
+                $coordinates = get_coordinates();
+                set_transient( $cache_key, $coordinates, DAY_IN_SECONDS );
+            }
+    
+            $response = new \WP_REST_Response($coordinates);
+            $response->set_status(200);
+            $response->set_headers(array('Cache-Control' => 'max-age=3600'));
+            
+            return $response;
+        }
 	));
 }
 
