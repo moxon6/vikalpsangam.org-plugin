@@ -30,7 +30,7 @@ class VikalpsangamCategories extends \WP_Widget {
     }
 
     public function form( $instance ) {
-        \Timber::render("categories-form.twig", array_merge(
+        \Timber::render("categories-admin.twig", array_merge(
             $this->getContext($instance), 
             [
                 "title_field_id" => $this->get_field_id( 'title' ),
