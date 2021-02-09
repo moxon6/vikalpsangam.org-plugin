@@ -8,5 +8,7 @@
             "email": "moxon6@googlemail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "timber/timber": "^1.18"
+    }
 }
