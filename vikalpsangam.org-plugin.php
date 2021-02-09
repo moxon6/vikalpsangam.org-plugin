@@ -12,3 +12,5 @@
  */
 
 include 'version.php';
+
+include 'widgets/stories-map/index.php';
