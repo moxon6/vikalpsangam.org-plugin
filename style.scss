@@ -1,2 +1,6 @@
 @import 'widgets/categories/categories.scss';
 @import 'widgets/stories-map/stories-map.scss';
+
+.category-list-wrapper, .sidebar-map {
+    @import "node_modules/bootstrap/scss/bootstrap";
+}
