@@ -25,8 +25,6 @@ function register_map_endpoint() {
         );
     }
 
-    
-
 	register_rest_route( 'vikalpsangam/v1', 'map', array(
 		'methods'  => 'GET',
 		'callback' => function ($request) {
