@@ -16,3 +16,7 @@ require_once( __DIR__ . '/vendor/autoload.php' );
 include 'version.php';
 
 include 'widgets/stories-map/index.php';
+
+add_action( 'wp_enqueue_scripts', function() {
+    wp_enqueue_style('vikalpsangam/plugin/style', plugin_dir_url( __FILE__ ) . '/style.css' );
+});

@@ -1,0 +1,33 @@
+$dark-brick-col: #9e332e;
+
+.category-list-wrapper {
+    .row {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  
+    h5 {
+      margin: 10px 0;
+    }
+  
+    ul li {
+      padding-bottom: 4px;
+      list-style-position: inside;
+  
+      a {
+        position: relative;
+        top: 5px;
+        font-size: 0.8em;
+        color: $dark-brick-col;
+        text-decoration: none;
+        text-transform: uppercase;
+        vertical-align: top;
+      }
+  
+      a:hover {
+        color: $dark-brick-col;
+        text-decoration: none;
+      }
+    }
+  }
+  
