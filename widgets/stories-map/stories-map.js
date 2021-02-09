@@ -13,14 +13,14 @@ async function fetchCoordinates() {
   return Object.values(coordinatesMap);
 }
 
-async function renderMap(id) {
+async function renderMap(mapElement) {
     const coordinates = await fetchCoordinates();
     const mapCenter = [
       mean(coordinates.map((x) => x.latitude)),
       mean(coordinates.map((x) => x.longitude)),
     ]
   
-    const map = L.map(id).setView(mapCenter, INITIAL_ZOOM_LEVEL);
+    const map = L.map(mapElement).setView(mapCenter, INITIAL_ZOOM_LEVEL);
   
     L.tileLayer(tileUrl, {
       attribution,
@@ -34,6 +34,12 @@ async function renderMap(id) {
       markers.addLayer(marker);
     });
     map.addLayer(markers);
+
+    const resizeObserver = new ResizeObserver(() => {
+      map.invalidateSize()
+    });
+
+    resizeObserver.observe(mapElement);
   }
   
   window.renderMap = renderMap;
