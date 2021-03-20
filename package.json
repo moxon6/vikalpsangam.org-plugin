@@ -4,11 +4,13 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"build:scss": "node-sass style.scss -o ."
+		"build:scss": "node-sass style.scss -o .",
+		"lint:scss": "wp-scripts lint-style \"widgets/**/*.scss\""
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@wordpress/scripts": "^14.0.1",
 		"node-sass": "^5.0.0"
 	},
 	"devDependencies": {
