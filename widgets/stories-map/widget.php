@@ -15,7 +15,6 @@ class StoriesMapWidget extends \WP_Widget {
         $context["title_field_id"] = $this->get_field_id( 'title' );
         $context["title_field_name"] = $this->get_field_name( 'title' );
 
-        
         $context["showCategoriesMenu"] = $instance["showCategoriesMenu"];
         $context["showCategoriesMenu_field_id"] = $this->get_field_id("showCategoriesMenu");
         $context["showCategoriesMenu_field_name"] = $this->get_field_name("showCategoriesMenu");
@@ -47,12 +46,16 @@ class StoriesMapWidget extends \WP_Widget {
 add_action( 'widgets_init', function() {
     register_widget( 'Vikalpsangam\Plugin\Widgets\StoriesMapWidget' );
 });
+
+function parseBool($str) {
+    return $str == "true";
+}
  
 add_shortcode('vikalpsangam_map', function ($atts) {
     return \Timber::compile("templates/stories-map.twig", [
-        showCategoriesMenu => ($atts["show-categories-menu"] != "true"),
-        enableClustering => ($atts["enable-clustering"] == "true"),
-        height => $atts["height"] ?? "400px",
-        marginBottom => $atts["margin-bottom"] ?? "32px"
+        showCategoriesMenu => parseBool($atts["show-categories-menu"]),
+        enableClustering => parseBool($atts["enable-clustering"]),
+        height => $atts["height"],
+        marginBottom => $atts["margin-bottom"]
     ]);
 });
