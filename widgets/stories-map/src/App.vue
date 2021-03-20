@@ -209,7 +209,7 @@ $dark-brick-col: #9e332e;
   font-weight: 700;
 }
 
-.sidebar-map {
+.map-container {
   box-shadow: 0 0 2px black;
   height: 400px;
   margin-bottom: 32px;
@@ -219,7 +219,7 @@ $dark-brick-col: #9e332e;
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.4);
 
   flex: 1;
-  height: 400px;
+  height: 100%;
   position: relative;
 
   .leaflet-popup-content-wrapper {

@@ -46,6 +46,14 @@ jobs:
         tag: ${{ steps.version-bump.outputs.newTag }}
         overwrite: true
         body: "Wordpress Plugin for vikalpsangam.org. Version ${{ steps.version-bump.outputs.newTag }}"
+      
+    - name: "stories-map / npm install"
+      working-directory: widgets/stories-map
+      run: "npm ci"
+
+    - name: "stories-map / build"
+      working-directory: widgets/stories-map
+      run: "npm run build"
 
     - name: Deploy Plugins to WP Server
       uses: appleboy/scp-action@master
