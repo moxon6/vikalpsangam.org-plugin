@@ -5,12 +5,14 @@
 	"main": "index.js",
 	"scripts": {
 		"build:scss": "node-sass style.scss -o .",
-		"lint:scss": "wp-scripts lint-style \"widgets/**/*.scss\""
+		"lint:scss": "wp-scripts lint-style \"widgets/**/*.scss\"",
+		"bundle": "node bundle.js"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
 		"@wordpress/scripts": "^14.0.1",
+		"archiver": "^5.3.0",
 		"node-sass": "^5.0.0"
 	},
 	"devDependencies": {
