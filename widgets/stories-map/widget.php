@@ -19,11 +19,11 @@ class StoriesMapWidget extends \WP_Widget {
     }
 
     function widget( $args, $instance ) {
-        \Timber::render("stories-map.twig", $this->getContext($instance));
+        \Timber::render("templates/stories-map.twig", $this->getContext($instance));
     }
 
     function form( $instance ) {
-        \Timber::render("stories-map-admin.twig", array_merge(
+        \Timber::render("templates/stories-map-admin.twig", array_merge(
             $this->getContext($instance), 
             [
                 "title_field_id" => $this->get_field_id( 'title' ),
