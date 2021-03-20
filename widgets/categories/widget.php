@@ -26,11 +26,11 @@ class VikalpsangamCategories extends \WP_Widget {
     }
 
     function widget( $args, $instance ) {
-        \Timber::render("categories.twig", $this->getContext($instance));
+        \Timber::render("templates/categories.twig", $this->getContext($instance));
     }
 
     public function form( $instance ) {
-        \Timber::render("categories-admin.twig", array_merge(
+        \Timber::render("templates/categories-admin.twig", array_merge(
             $this->getContext($instance), 
             [
                 "title_field_id" => $this->get_field_id( 'title' ),

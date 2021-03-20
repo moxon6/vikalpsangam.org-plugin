@@ -2,4 +2,4 @@
 
 namespace Vikalpsangam\Plugin\Widgets;
 
-include 'categories.php';
+include 'widget.php';
