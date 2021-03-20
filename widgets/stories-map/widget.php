@@ -5,17 +5,17 @@ namespace Vikalpsangam\Plugin\Widgets;
 class StoriesMapWidget extends \WP_Widget {
 
     function __construct() {
-        parent::__construct( 'StoriesMapWidget', __( 'Vikalpsangam Stories Map Widget', 'textdomain' ) );
+        parent::__construct( 'StoriesMapWidget', 'Vikalpsangam Stories Map Widget' );
     }
 
     private function getContext($instance) {
         $context = \Timber::context();
 
-        $title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'New title', 'text_domain' );
-        $title = esc_attr( $title );
+        $context["title"] = esc_attr( $instance['title'] ?? '' );
+        $context["title_field_id"] = $this->get_field_id( 'title' );
+        $context["title_field_name"] = $this->get_field_name( 'title' );
 
-        $context["title"] = $title;
-		return $context;
+        return $context;
     }
 
     function widget( $args, $instance ) {
@@ -23,13 +23,7 @@ class StoriesMapWidget extends \WP_Widget {
     }
 
     function form( $instance ) {
-        \Timber::render("templates/stories-map-admin.twig", array_merge(
-            $this->getContext($instance), 
-            [
-                "title_field_id" => $this->get_field_id( 'title' ),
-                "title_field_name" => $this->get_field_name( 'title' )
-            ]
-        ));
+        \Timber::render("templates/stories-map-admin.twig", $this->getContext($instance));
     }
 }
  

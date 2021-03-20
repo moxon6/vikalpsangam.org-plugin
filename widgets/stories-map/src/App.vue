@@ -200,11 +200,26 @@ export default {
 <style lang="scss">
 $dark-brick-col: #9e332e;
 
+.stories-map-title {
+  color: #9e332e;
+  text-shadow: none;
+  text-transform: uppercase;
+  opacity: 1;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-map {
+  box-shadow: 0 0 2px black;
+  height: 400px;
+  margin-bottom: 32px;
+}
+
 .stories-map {
-  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.4);
 
   flex: 1;
-  height: 100%;
+  height: 400px;
   position: relative;
 
   .leaflet-popup-content-wrapper {

@@ -57,14 +57,14 @@ function register_map_endpoint() {
             $coordinates = get_coordinates();
             set_transient( $cache_key, $coordinates, DAY_IN_SECONDS );
         }
-
+    
         $categories = get_categories();
 
         foreach($categories as $category) {
             $category->color = get_field('color', $category) ?? "white";
         }
 
-        $response = new WP_REST_Response([
+        $response = new \WP_REST_Response([
             "coordinates" => $coordinates,
             "categories" => $categories
         ]);
@@ -75,7 +75,7 @@ function register_map_endpoint() {
 
 	register_rest_route( 'vikalpsangam-plugin/v2', 'map', array(
 		'methods'  => 'GET',
-		'callback' => 'get_article_coordinates'
+		'callback' => __NAMESPACE__ . '\get_article_coordinates'
 	));
 }
 
