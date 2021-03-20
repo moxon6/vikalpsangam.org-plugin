@@ -1,5 +1,7 @@
 {% if title is defined %}
-	<h2 class="stories-map-title">{{title}}</h2>
+	<a href="{{title_link}}">
+		<h2 class="stories-map-title">{{title}}</h2>
+	</a>
 {% endif %} 
 <div class="map-container"  style="height: {{height}}; margin-bottom: {{marginBottom}}">
 	<div class="stories-map">
