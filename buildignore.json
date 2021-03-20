@@ -1,5 +1,7 @@
 [
     "bundle.js",
+    "buildignore.json",
+    "style.scss",
     ".DS_Store",
     ".eslintrc",
     ".git/**",
@@ -17,7 +19,8 @@
     "README.md",
     "style.css.map",
     "update-version",
-    "vikalpsangam.zip",
+    "vikalpsangam.org-plugin.zip",
+    "widgets/categories/templates/categories.scss",
     "widgets/stories-map/.cache/**",
     "widgets/stories-map/src/**",
     "widgets/stories-map/package*.json",

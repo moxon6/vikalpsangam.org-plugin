@@ -4,7 +4,7 @@ const ignore = require('./buildignore.json');
 
 const archive = archiver('zip');
 archive.pipe(
-  fs.createWriteStream(`${__dirname}/vikalpsangam-plugin.zip`),
+  fs.createWriteStream(`${__dirname}/vikalpsangam.org-plugin.zip`),
 );
 
 archive.glob('**', {
