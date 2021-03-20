@@ -1,0 +1,17 @@
+{% if title is defined %}
+	<a href="{{title_link}}">
+		<h2 class="stories-map-title">{{title}}</h2>
+	</a>
+{% endif %} 
+<div class="map-container"  style="height: {{height}}; margin-bottom: {{marginBottom}}">
+	<div class="stories-map">
+	</div>
+	<script>
+		renderMap(document.currentScript.previousElementSibling, {
+			clusterOptions: {
+					disableClusteringAtZoom: {{ enableClustering ? 10 : 0 }}
+			},
+			showCategoriesMenu: {{showCategoriesMenu | json_encode }}
+		});
+	</script>
+</div>

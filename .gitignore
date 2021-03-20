@@ -1,4 +1,7 @@
 node_modules
 .cache
+dist
 vikalpsangam.org-plugin.zip
 version.php
+/vendor/
+style.css

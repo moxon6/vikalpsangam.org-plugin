@@ -1,0 +1,14 @@
+{
+    "name": "vikalpsangam/vikalpsangam.org-plugin",
+    "description": "Plugin for Vikalpsangam.org",
+    "type": "plugin",
+    "authors": [
+        {
+            "name": "Martin Moxon",
+            "email": "moxon6@googlemail.com"
+        }
+    ],
+    "require": {
+        "timber/timber": "^1.18"
+    }
+}

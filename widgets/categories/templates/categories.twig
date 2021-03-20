@@ -1,0 +1,15 @@
+<div id="category-list" class="category-list-wrapper container-fluid">
+	<div class="row">
+		<h2 class="category-list-title">{{title}}</h2>
+		<div class="col-xs-12 col-sm-6 col-md-12 p-0">
+			<ul class="list-unstyled">
+				{% for category in post_categories %}
+					<li>
+						<img class="sidebar-icon" src="{{ Image(category.meta('image')).src }}">
+						<a href="{{ category.link }}">{{ category.name }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>

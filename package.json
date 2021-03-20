@@ -1,38 +1,17 @@
 {
-	"name": "vikalpsangam-map",
-	"version": "0.1.10",
-	"description": "Vikalpsangam.org maps block",
-	"author": "Martin Moxon",
-	"license": "GPL-2.0-or-later",
-	"main": "build/index.js",
+	"name": "vikalpsangam-plugin",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
 	"scripts": {
-		"build": "ls blocks | xargs bash -c 'BLOCK=$0 npm run build:block' ",
-		"build:block": "rm -rf $BLOCK/build && BLOCK=$BLOCK npm run build:block:editor && BLOCK=$BLOCK npm run build:block:client",
-		"build:block:editor": "wp-scripts build blocks/$BLOCK/src/editor/index.js -o blocks/$BLOCK/build/editor/index.js",
-		"build:block:client": "parcel build blocks/$BLOCK/src/client/index.js -d blocks/$BLOCK/build/client",
-		"format:js": "wp-scripts format-js",
-		"lint:scss": "wp-scripts lint-style",
-		"lint:js": "wp-scripts lint-js",
-		"bundle": "dir-archiver --src . --dest vikalpsangam.org-plugin.zip --exclude node_modules .cache src vikalpsangam.org-plugin.zip package*.json .gitignore $(find blocks/*/src)"
+		"build:scss": "node-sass style.scss -o ."
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"node-sass": "^5.0.0"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.12.9",
-		"@wordpress/babel-preset-default": "^4.19.0",
-		"@wordpress/blocks": "^6.24.1",
-		"@wordpress/element": "^2.18.0",
-		"@wordpress/scripts": "^12.5.0",
-		"file-loader": "^6.2.0",
-		"resolve-url-loader": "^3.1.2",
-		"sass": "^1.29.0",
-		"style-loader": "^2.0.0"
-	},
-	"dependencies": {
-		"@wordpress/api-fetch": "^3.20.0",
-		"dir-archiver": "^1.1.2",
-		"leaflet": "^1.7.1",
-		"leaflet.markercluster": "^1.4.1",
-		"parcel": "^1.12.4",
-		"react-dom": "^17.0.1",
-		"react-scripts": "^4.0.1"
+		"bootstrap": "^4.6.0"
 	}
 }
