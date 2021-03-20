@@ -172,7 +172,9 @@ export default {
       );
     },
     async fetchData() {
-      const response = await wp.apiRequest({ path: "vikalpsangam/v2/map" });
+      const response = await wp.apiRequest({
+        path: "vikalpsangam-plugin/v2/map",
+      });
 
       this.categories = _.chain(response.categories)
         .map((category) => ({

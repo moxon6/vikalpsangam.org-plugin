@@ -73,7 +73,7 @@ function register_map_endpoint() {
         return $response;
     }
 
-	register_rest_route( 'vikalpsangam/v2', 'map', array(
+	register_rest_route( 'vikalpsangam-plugin/v2', 'map', array(
 		'methods'  => 'GET',
 		'callback' => 'get_article_coordinates'
 	));

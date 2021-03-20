@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "parcel build index.js --no-source-maps --public-url '.'",
-    "watch": "parcel watch index.js --no-source-maps --public-url '.'"
+    "build": "parcel build src/index.js --no-source-maps --public-url '.'",
+    "watch": "parcel watch src/index.js --no-source-maps --public-url '.'"
   },
   "author": "",
   "license": "ISC",
