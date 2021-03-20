@@ -1,17 +1,17 @@
 {
-  "name": "vikalpsangam-plugin",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build:scss": "node-sass style.scss -o ."
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "node-sass": "^5.0.0"
-  },
-  "devDependencies": {
-    "bootstrap": "^4.6.0"
-  }
+	"name": "vikalpsangam-plugin",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build:scss": "node-sass style.scss -o ."
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"node-sass": "^5.0.0"
+	},
+	"devDependencies": {
+		"bootstrap": "^4.6.0"
+	}
 }
