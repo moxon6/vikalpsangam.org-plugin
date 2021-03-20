@@ -19,6 +19,14 @@ jobs:
     - name: "Lint scss"
       run: npm run lint:scss
 
+    - name: "stories-map / npm install"
+      working-directory: widgets/stories-map
+      run: "npm ci"
+
+    - name: "stories-map / build"
+      working-directory: widgets/stories-map
+      run: "npm run build"
+
     - name: 'Automated Version Bump'
       id: 'version-bump'
       uses: 'phips28/gh-action-bump-version@master'
@@ -27,14 +35,6 @@ jobs:
     
     - name: "Update version.php"
       run: ./update-version
-
-    - name: "stories-map / npm install"
-      working-directory: widgets/stories-map
-      run: "npm ci"
-
-    - name: "stories-map / build"
-      working-directory: widgets/stories-map
-      run: "npm run build"
 
     - name: "Create plugin bundle"
       run: npm run bundle
