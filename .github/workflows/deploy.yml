@@ -5,20 +5,29 @@ on:
       environment:
         description: 'Deployment Environment'     
         required: true
-        default: 'dev'
+      version:
+        description: 'Version to deploy'     
+        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
     environment: 
       name: ${{ inputs.environment }}
     steps:
-    - name: Deploy Plugins to WP Server
+    - name: Fetch Latest Release
+      uses: dsaltares/fetch-gh-release-asset@master
+      with:
+        version: "latest"
+        file: "vikalpsangam.org-plugin-${{inputs.version}}.zip"
+        target: "vikalpsangam.org-plugin.zip"
+
+    - name: Copy Plugins to WP Server
       uses: appleboy/scp-action@master
       with:
-        username: ${{ secrets.DEPLOYMENT_USER }}
-        host: ${{ secrets.DEPLOYMENT_HOST }}
-        key: ${{ secrets.DEPLOYMENT_KEY }}
-        source: "vikalpsangam.org-plugin.zip"
+        username: ${{ secrets.USER }}
+        host: ${{ secrets.HOST }}
+        key: ${{ secrets.SSH_KEY }}
+        source: "vikalpsangam.org-plugin"
         target: "/tmp"
         port: 22
 
@@ -35,4 +44,3 @@ jobs:
             --allow-root \
             --path=/var/www/html \
             --force
-
