@@ -12,13 +12,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: 
-      name: ${{ inputs.environment }}
+      name: ${{ github.event.inputs.environment }}
     steps:
     - name: Fetch Latest Release
       uses: dsaltares/fetch-gh-release-asset@master
       with:
         version: "latest"
-        file: "vikalpsangam.org-plugin-${{inputs.version}}.zip"
+        file: "vikalpsangam.org-plugin-${{github.event.inputs.version}}.zip"
         target: "vikalpsangam.org-plugin.zip"
 
     - name: Copy Plugins to WP Server
