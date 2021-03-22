@@ -21,7 +21,7 @@ jobs:
         host: ${{ secrets.HOST }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          wget https://github.com/moxon6/vikalpsangam.org-plugin/releases/download/${{github.event.inputs.version}}/vikalpsangam.org-plugin-${{github.event.inputs.version}}.zip -O /tmp/vikalpsangam.org-plugin.zip
+          wget https://github.com/${{github.repository}}/releases/download/${{github.event.inputs.version}}/vikalpsangam.org-plugin-${{github.event.inputs.version}}.zip -O /tmp/vikalpsangam.org-plugin.zip
           sudo wp plugin install /tmp/vikalpsangam.org-plugin.zip \
             --activate \
             --allow-root \
