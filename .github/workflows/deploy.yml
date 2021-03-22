@@ -25,7 +25,7 @@ jobs:
       with:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
-        key: ${{ secrets.REPO_SSH_KEY }}
+        key: ${{ secrets.SSH_KEY }}
         source: "vikalpsangam.org-plugin.zip"
         target: "/tmp"
 
@@ -34,7 +34,7 @@ jobs:
       with:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
-        key: ${{ secrets.REPO_SSH_KEY }}
+        key: ${{ secrets.SSH_KEY }}
         script: |
           sudo wp plugin install /tmp/vikalpsangam.org-plugin.zip \
             --activate \
