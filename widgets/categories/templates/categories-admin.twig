@@ -1,6 +1,15 @@
-<p>
-	<input placeholder="Title" class="widefat" id="{{ title_field_id }}" name="{{ title_field_name }}" type="text" value="{{ title }}">
-</p>
+<input placeholder="Title" class="widefat" id="{{ title_field_id }}" name="{{ title_field_name }}" type="text" value="{{ title }}">
 
+<label>
+	Select Categories
+	{% for container in categories_with_meta %}
+		<li>
+			<label class="selectit">
+				{{ container.category.name }}
+				<input type="checkbox" name="{{container.field_name}}" id="{{container.field_id}}"  {{ container.selected ? "checked" : "" }}>
+			</label>
+		</li>
+	{% endfor %}
+</label>
 
 {% include 'templates/categories.twig' %}

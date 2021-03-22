@@ -3,7 +3,8 @@
 		<h2 class="category-list-title">{{title}}</h2>
 		<div class="col-xs-12 col-sm-6 col-md-12 p-0">
 			<ul class="list-unstyled">
-				{% for category in post_categories %}
+				{% for container in categories_with_meta|filter(container => container.selected) %}
+					{% set category = container.category %}
 					<li>
 						<img class="sidebar-icon" src="{{ Image(category.meta('image')).src }}">
 						<a href="{{ category.link }}">{{ category.name }}</a>
