@@ -1,4 +1,5 @@
-# /bin/bash
+#/bin/bash
 
 version=$(node -p "require('./package.json').version")
-echo "<?php define('vikalpsangam_plugin_VERSION', '$version');" >| version.php
+new_text="* Version:         $version"
+sed -i "s/\* Version:/$new_text/g" vikalpsangam.org-plugin.php
