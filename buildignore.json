@@ -21,7 +21,7 @@
     "README.md",
     "style.css.map",
     "update-version",
-    "vikalpsangam.org-plugin.zip",
+    "*.zip",
     "widgets/categories/templates/categories.scss",
     "widgets/stories-map/.cache/**",
     "widgets/stories-map/src/**",
