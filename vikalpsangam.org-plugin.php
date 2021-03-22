@@ -15,8 +15,6 @@ namespace Vikalpsangam\Plugin;
 
 require_once( __DIR__ . '/vendor/autoload.php' );
 
-include 'version.php';
-
 include 'widgets/stories-map/index.php';
 include 'widgets/categories/index.php';
 
