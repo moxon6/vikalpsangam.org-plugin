@@ -38,5 +38,5 @@ jobs:
           sudo wp plugin install /tmp/vikalpsangam.org-plugin.zip \
             --activate \
             --allow-root \
-            --path=/var/www/html \
+            --path=${{ secrets.WORDPRESS_PATH }} \
             --force
