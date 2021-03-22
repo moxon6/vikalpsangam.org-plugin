@@ -37,7 +37,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     - name: "Update Version in plugin header"
-      run: >
+      run: |
         version=$(node -p "require('./package.json').version")
         version_line="* Version:         $version"
         sed -i "s/\* Version:/$version_line/g" vikalpsangam.org-plugin.php
