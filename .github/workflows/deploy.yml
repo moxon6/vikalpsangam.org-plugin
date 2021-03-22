@@ -22,9 +22,13 @@ jobs:
         target: "vikalpsangam.org-plugin.zip"
 
     - name: Copy plugin to server
-      run: >
-        echo ${{ secrets.SSH_KEY }} > ssh.key
-        scp -i ssh.key vikalpsangam.org-plugin.zip {{secrets.USER}}@{{secrets.HOST}}:/tmp
+      uses: appleboy/scp-action@master
+      with:
+        username: ${{ secrets.USER }}
+        host: ${{ secrets.HOST }}
+        key: ${{ secrets.REPO_SSH_KEY }}
+        source: "vikalpsangam.org-plugin.zip"
+        target: "/tmp"
 
     - name: Install plugin using Wordpress cli over ssh
       uses: appleboy/ssh-action@master
