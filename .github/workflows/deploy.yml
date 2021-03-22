@@ -10,6 +10,7 @@ on:
         required: true
 jobs:
   deploy:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
     - name: Fetch plugin release asset
