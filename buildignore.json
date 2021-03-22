@@ -1,6 +1,8 @@
 [
     "bundle.js",
     "buildignore.json",
+    "docker_tag",
+    "build.log",
     "style.scss",
     ".DS_Store",
     ".eslintrc",
