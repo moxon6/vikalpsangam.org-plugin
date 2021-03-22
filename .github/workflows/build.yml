@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - uses: php-actions/composer@v5
 
     - uses: actions/setup-node@v1
       with:
