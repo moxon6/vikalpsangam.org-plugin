@@ -27,7 +27,7 @@ jobs:
         username: ${{ secrets.USER }}
         host: ${{ secrets.HOST }}
         key: ${{ secrets.REPO_SSH_KEY }}
-        source: "vikalpsangam.org-plugin.zip"
+        source: "doesnotexist.zip"
         target: "/tmp"
 
     - name: Install plugin using Wordpress cli over ssh
