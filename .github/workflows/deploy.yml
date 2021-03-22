@@ -10,7 +10,8 @@ on:
         required: true
 jobs:
   deploy:
-    environment: ${{github.event.inputs.environment}}
+    environment: 
+      name: ${{ github.event.inputs.environment }}
     runs-on: ubuntu-latest
     steps:
     - name: Fetch plugin release asset
