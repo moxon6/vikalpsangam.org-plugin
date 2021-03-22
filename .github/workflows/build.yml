@@ -45,9 +45,6 @@ jobs:
     - name: "Compile scss -> css"
       run: npm run build:scss
 
-    - name: "Compile rtl css"
-      run: npm run build:scss-rtl
-
     - name: "Create plugin bundle"
       run: npm run bundle
     
