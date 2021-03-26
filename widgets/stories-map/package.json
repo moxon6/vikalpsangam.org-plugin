@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "parcel build src/index.js --no-source-maps --public-url '.'",
+    "build": "NODE_ENV=production parcel build src/index.js --no-source-maps --public-url '.' ",
     "watch": "parcel watch src/index.js --no-source-maps --public-url '.'"
   },
   "author": "",
