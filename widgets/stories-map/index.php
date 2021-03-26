@@ -6,7 +6,7 @@ include 'endpoint.php';
 include 'widget.php';
 
 function enqueue_scripts() {
-	wp_enqueue_script( 'vikalpsangam/stories-map', plugin_dir_url( __FILE__ ). '/dist/index.js', [], vikalpsangam_plugin_VERSION );
+	wp_enqueue_script( 'vikalpsangam/stories-map', plugin_dir_url( __FILE__ ). '/dist/index.js', ["jquery", "wp-api", "underscore"], vikalpsangam_plugin_VERSION );
 	wp_enqueue_style("vikalpsangam/stories-map/css", plugin_dir_url( __FILE__ ). '/dist/index.css');
 }
 
