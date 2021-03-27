@@ -19,7 +19,8 @@ include 'widgets/stories-map/index.php';
 include 'widgets/categories/index.php';
 
 function enqueueScripts() {
-    wp_enqueue_style('vikalpsangam/plugin/style', plugin_dir_url( __FILE__ ) . '/style.css' );
+    $build_time = filemtime(dirname(__FILE__) . '/style.css');
+    wp_enqueue_style('vikalpsangam/plugin/style', plugin_dir_url( __FILE__ ) . 'style.css', [], $build_time);
 }
 
 add_action( 'wp_enqueue_scripts', 'Vikalpsangam\Plugin\enqueueScripts');
