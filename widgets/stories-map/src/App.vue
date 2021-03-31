@@ -108,6 +108,12 @@ const getCenter = (coordinates) => [
   ],
 ];
 
+const txt = document.createElement("textarea");
+const decode = (html) => {
+  txt.innerHTML = html;
+  return txt.value;
+};
+
 export default {
   components: {
     LMap,
@@ -190,7 +196,13 @@ export default {
         .indexBy("cat_ID")
         .value();
 
-      this.coordinates = Object.values(response.coordinates);
+      this.coordinates = Object.values(response.coordinates).map(
+        (coordinate) => ({
+          ...coordinate,
+          title: decode(coordinate.title),
+          excerpt: decode(coordinate.excerpt),
+        })
+      );
       this.center = new L.LatLngBounds(getCenter(this.coordinates)).getCenter();
     },
   },
