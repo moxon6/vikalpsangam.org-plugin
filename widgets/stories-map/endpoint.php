@@ -82,5 +82,7 @@ function rebuild_vikalpsangam_map_cache() {
 }
 
 if ( ! wp_next_scheduled( 'rebuild_vikalpsangam_map_cache' ) ) {
-    wp_schedule_event( time(), 'twicedaily', 'rebuild_cache' );
+    wp_schedule_event( time(), 'twicedaily', 'rebuild_vikalpsangam_map_cache' );
 }
+
+add_action( 'rebuild_vikalpsangam_map_cache',  __NAMESPACE__ . '\rebuild_vikalpsangam_map_cache');
