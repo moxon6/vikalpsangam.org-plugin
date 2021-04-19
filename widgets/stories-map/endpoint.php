@@ -35,20 +35,6 @@ function register_map_endpoint() {
     }
 
     function get_article_coordinates($request) {
-        
-        $colors = [
-            '#a6cee3',
-            '#1f78b4',
-            '#b2df8a',
-            '#33a02c',
-            '#fb9a99',
-            '#e31a1c',
-            '#fdbf6f',
-            '#ff7f00',
-            '#cab2d6',
-            '#6a3d9a',
-            '#dddddd',
-        ];
 
         $cache_key = "get_article_coordinates";
 
