@@ -57,9 +57,9 @@ function parseBool($str) {
  
 add_shortcode('vikalpsangam_map', function ($atts) {
     return \Timber::compile("templates/stories-map.twig", [
-        showCategoriesMenu => parseBool($atts["show-categories-menu"]),
-        enableClustering => parseBool($atts["enable-clustering"]),
-        height => $atts["height"],
-        marginBottom => $atts["margin-bottom"]
+        "showCategoriesMenu" => parseBool($atts["show-categories-menu"]),
+        "enableClustering" => parseBool($atts["enable-clustering"]),
+        "height" => $atts["height"],
+        "marginBottom" => $atts["margin-bottom"]
     ]);
 });
