@@ -1,0 +1,59 @@
+name: Build and deploy from dev branch
+on:
+    push:
+        branches:
+            - "feature/*"
+jobs:
+    deploy:
+        environment:
+            name: dev
+            url: https://dev.vikalpsangam.org
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+
+            - uses: php-actions/composer@v2
+              with:
+                  dev: no
+
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: "12"
+
+            - name: "npm install"
+              run: npm ci
+
+            - name: "Update Version in plugin header"
+              run: |
+                version=$(node -p "require('./package.json').version")
+                version_line="* Version:         $version"
+                sed -i "s/\* Version:/$version_line/g" vikalpsangam.org-plugin.php
+
+            - name: "Compile scss -> css"
+              run: npm run build:scss
+
+            - name: "Create plugin bundle"
+              run: npm run bundle
+
+            - name: Upload plugin bundle
+              uses: appleboy/scp-action@master
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.SSH_KEY }}
+                  source: vikalpsangam.org-plugin.zip
+                  target: /tmp
+                  overwrite: true
+
+            - name: Install plugin using Wordpress cli over ssh
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.SSH_KEY }}
+                  script: |
+                      sudo wp theme install /tmp/vikalpsangam.org-plugin.zip \
+                        --activate \
+                        --allow-root \
+                        --path=${{ secrets.WORDPRESS_PATH }} \
+                        --force
