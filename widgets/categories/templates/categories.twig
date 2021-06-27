@@ -1,9 +1,9 @@
 <div id="category-list" class="category-list-wrapper">
-	<ul class="list-unstyled">
+	<ul class="category-list">
 		{% for container in categories_with_meta|filter(container => container.selected) %}
 			{% set category = container.category %}
-			<li>
-				<img class="sidebar-icon" src="{{ Image(category.meta('image')).src }}">
+			<li class="category-list-item">
+				<img class="category-icon" src="{{ Image(category.meta('image')).src }}">
 				<a href="{{ category.link }}">{{ category.name }}</a>
 			</li>
 		{% endfor %}

@@ -5,7 +5,12 @@ $dark-brick-col: #9e332e;
 		column-count: 2;
 	}
 
-	ul li {
+	.category-list {
+		list-style: none;
+    	padding-left: 0;
+	}
+
+	.category-list .category-list-item {
 		padding-bottom: 12px;
 		list-style-position: inside;
 
@@ -20,7 +25,7 @@ $dark-brick-col: #9e332e;
 			margin-left: 4px;
 		}
 
-		.sidebar-icon {
+		.category-icon {
 			width: 28px;
 			height: 28px;
 		}
