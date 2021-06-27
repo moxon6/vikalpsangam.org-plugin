@@ -52,7 +52,7 @@ jobs:
                   username: ${{ secrets.USERNAME }}
                   key: ${{ secrets.SSH_KEY }}
                   script: |
-                      sudo wp theme install /tmp/vikalpsangam.org-plugin.zip \
+                      sudo wp plugin install /tmp/vikalpsangam.org-plugin.zip \
                         --activate \
                         --allow-root \
                         --path=${{ secrets.WORDPRESS_PATH }} \
