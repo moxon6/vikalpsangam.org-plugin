@@ -23,6 +23,14 @@ jobs:
             - name: "npm install"
               run: npm ci
 
+            - name: "stories-map / npm install"
+              working-directory: widgets/stories-map
+              run: "npm ci"
+
+            - name: "stories-map / build"
+              working-directory: widgets/stories-map
+              run: "npm run build"
+
             - name: "Update Version in plugin header"
               run: |
                 version=$(node -p "require('./package.json').version")
