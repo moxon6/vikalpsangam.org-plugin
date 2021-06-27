@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"build:scss": "sass style.scss style.css",
+		"watch:scss": "sass style.scss style.css -w",
 		"lint:scss": "wp-scripts lint-style \"widgets/**/*.scss\"",
 		"bundle": "node bundle.js"
 	},
