@@ -1,59 +1,59 @@
-name: build
+name: Build and Publish
 on:
-  push:
-    branches:
-      - 'master'
-    paths-ignore:
-        - '.github/**'
+    push:
+        branches:
+            - 'master'
+        paths-ignore:
+            - '.github/**'
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: php-actions/composer@v5
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+            - uses: php-actions/composer@v2
 
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '12'
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: '12'
 
-    - name: "npm install"
-      run: npm ci
+            - name: "npm install"
+              run: npm ci
 
-    - name: "Lint scss"
-      run: npm run lint:scss
+            - name: "Lint scss"
+              run: npm run lint:scss
 
-    - name: "stories-map / npm install"
-      working-directory: widgets/stories-map
-      run: "npm ci"
+            - name: "stories-map / npm install"
+              working-directory: widgets/stories-map
+              run: "npm ci"
 
-    - name: "stories-map / build"
-      working-directory: widgets/stories-map
-      run: "npm run build"
+            - name: "stories-map / build"
+              working-directory: widgets/stories-map
+              run: "npm run build"
 
-    - name: 'Automated Version Bump'
-      id: 'version-bump'
-      uses: 'phips28/gh-action-bump-version@master'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: 'Automated Version Bump'
+              id: 'version-bump'
+              uses: 'phips28/gh-action-bump-version@master'
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: "Update Version in plugin header"
-      run: |
-        version=$(node -p "require('./package.json').version")
-        version_line="* Version:         $version"
-        sed -i "s/\* Version:/$version_line/g" vikalpsangam.org-plugin.php
+            - name: "Update Version in plugin header"
+              run: |
+                version=$(node -p "require('./package.json').version")
+                version_line="* Version:         $version"
+                sed -i "s/\* Version:/$version_line/g" vikalpsangam.org-plugin.php
 
-    - name: "Compile scss -> css"
-      run: npm run build:scss
+            - name: "Compile scss -> css"
+              run: npm run build:scss
 
-    - name: "Create plugin bundle"
-      run: npm run bundle
-    
-    - name: Upload plugin package
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: vikalpsangam.org-plugin.zip
-        asset_name: vikalpsangam.org-plugin-${{ steps.version-bump.outputs.newTag }}.zip
-        tag: ${{ steps.version-bump.outputs.newTag }}
-        overwrite: true
-        body: "Wordpress Plugin for vikalpsangam.org. Version ${{ steps.version-bump.outputs.newTag }}"
+            - name: "Create plugin bundle"
+              run: npm run bundle
+
+            - name: Upload plugin package
+              uses: svenstaro/upload-release-action@v2
+              with:
+                  repo_token: ${{ secrets.GITHUB_TOKEN }}
+                  file: vikalpsangam.org-plugin.zip
+                  asset_name: vikalpsangam.org-plugin-${{ steps.version-bump.outputs.newTag }}.zip
+                  tag: ${{ steps.version-bump.outputs.newTag }}
+                  overwrite: true
+                  body: "Wordpress Plugin for vikalpsangam.org. Version ${{ steps.version-bump.outputs.newTag }}"
