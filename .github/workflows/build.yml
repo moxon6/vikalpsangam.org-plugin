@@ -19,9 +19,6 @@ jobs:
             - name: "npm install"
               run: npm ci
 
-            - name: "Lint scss"
-              run: npm run lint:scss
-
             - name: "stories-map / npm install"
               working-directory: widgets/stories-map
               run: "npm ci"
