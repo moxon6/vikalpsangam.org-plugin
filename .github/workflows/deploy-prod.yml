@@ -23,7 +23,7 @@ jobs:
                   proxy_key: ${{ secrets.PROXY_KEY }}
                   script: |
                       wget https://github.com/${{github.repository}}/releases/download/${{github.event.inputs.version}}/vikalpsangam.org-plugin-${{github.event.inputs.version}}.zip -O /tmp/vikalpsangam.org-plugin.zip
-                      sudo wp theme install /tmp/vikalpsangam.org-plugin.zip \
+                      sudo wp plugin install /tmp/vikalpsangam.org-plugin.zip \
                         --activate \
                         --allow-root \
                         --path=${{ secrets.WORDPRESS_PATH }} \
