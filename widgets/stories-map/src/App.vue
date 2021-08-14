@@ -37,7 +37,7 @@
           </l-marker>
         </div>
       </v-marker-cluster>
-      <l-control position="bottomleft">
+      <l-control v-if="termsOfService" position="bottomleft">
         <a :href="termsOfService">
           Terms of Service
         </a>
