@@ -1,1 +1,8 @@
-@import 'widgets/categories/templates/categories.scss';
+@import "widgets/categories/templates/categories";
+@import "./node_modules/bootstrap/scss/functions";
+@import "./node_modules/bootstrap/scss/variables";
+@import "./node_modules/bootstrap/scss/mixins";
+@import "./node_modules/bootstrap/scss/utilities";
+
+@import "./node_modules/bootstrap/scss/accordion";
+@import "./node_modules/bootstrap/scss/transitions";
