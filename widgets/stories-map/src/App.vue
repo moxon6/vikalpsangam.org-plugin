@@ -81,6 +81,7 @@ import { LMap, LTileLayer, LMarker, LPopup, LControl } from "vue2-leaflet";
 import VueLazyload from "vue-lazyload";
 import Vue2LeafletMarkerCluster from "vue2-leaflet-markercluster";
 import Vue from "vue";
+
 Vue.use(VueLazyload);
 
 const setVh = () =>
@@ -154,7 +155,8 @@ export default {
       this.$el.clientWidth > 767 ? 6 : this.$el.clientWidth > 600 ? 5 : 4;
 
     map.addControl(new L.Control.Fullscreen({ position: "topright" }));
-    this.fetchData();
+    this.fetchGeoJson(map)
+    this.fetchData()
   },
   methods: {
     onMapReady() {
@@ -176,6 +178,11 @@ export default {
         !this.selectedCategory ||
         coordinate.categories.includes(this.selectedCategory)
       );
+    },
+    async fetchGeoJson(map) {
+        return fetch("/wp-content/plugins/vikalpsangam.org-plugin/widgets/stories-map/states_india.json")
+          .then(res => res.json())
+          .then(boundaries => L.geoJSON(boundaries).addTo(map) )
     },
     async fetchData() {
       const response = await wp.apiRequest({
