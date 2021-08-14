@@ -37,6 +37,11 @@
           </l-marker>
         </div>
       </v-marker-cluster>
+      <l-control position="bottomleft">
+        <a :href="termsOfService">
+          Terms of Service
+        </a>
+      </l-control>
       <l-control position="bottomright" v-if="showCategoriesMenu">
         <div class="category-list">
           <a
@@ -132,6 +137,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    termsOfService: {
+      type: String,
+      default: "/"
+    }
   },
   data() {
     return {
@@ -155,6 +164,7 @@ export default {
       this.$el.clientWidth > 767 ? 6 : this.$el.clientWidth > 600 ? 5 : 4;
 
     map.addControl(new L.Control.Fullscreen({ position: "topright" }));
+    window.theMap = map;
     this.fetchGeoJson(map)
     this.fetchData()
   },

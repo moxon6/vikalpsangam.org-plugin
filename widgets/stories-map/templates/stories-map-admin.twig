@@ -26,4 +26,9 @@
 	<label for="{{ enableClustering_field_id }}">Enable Clustering</label>
 	<input class="widefat" id="{{ enableClustering_field_id }}" name="{{ enableClustering_field_name }}" type="checkbox" {{ enableClustering ? "checked" : "" }}>
 
+	<hr/>
+	
+	<label for="{{ termsOfService_field_id }}">termsOfService</label>
+	<input class="widefat" id="{{ termsOfService_field_id }}" name="{{ termsOfService_field_name }}" type="text" value="{{ termsOfService }}">
+
 {% include 'templates/stories-map.twig' %}

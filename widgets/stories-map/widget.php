@@ -60,6 +60,7 @@ add_shortcode('vikalpsangam_map', function ($atts) {
         "showCategoriesMenu" => parseBool($atts["show-categories-menu"]),
         "enableClustering" => parseBool($atts["enable-clustering"]),
         "height" => $atts["height"],
-        "marginBottom" => $atts["margin-bottom"]
+        "marginBottom" => $atts["margin-bottom"],
+        "termsOfService" => $atts["terms-of-service"]
     ]);
 });

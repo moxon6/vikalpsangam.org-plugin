@@ -11,7 +11,8 @@
 			clusterOptions: {
 					disableClusteringAtZoom: {{ enableClustering ? 10 : 0 }}
 			},
-			showCategoriesMenu: {{showCategoriesMenu | json_encode }}
+			showCategoriesMenu: {{showCategoriesMenu | json_encode }},
+			termsOfService: {{ termsOfService | json_encode }}
 		});
 	</script>
 </div>
